@@ -36,6 +36,6 @@ app.post('/reg', (req, res) => {
   })
 })
 
-app.listen('2008', () => {
-  console.log('Server listening on port 2008');
+app.listen('1338', () => {
+  console.log('Server listening on port 1338');
 })
