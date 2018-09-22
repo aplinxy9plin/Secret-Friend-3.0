@@ -21,17 +21,59 @@ app.post('/reg', (req, res) => {
       sex = req.query.sex,
       age = req.query.age,
       country = req.query.country,
-      city = req.query.city;
+      city = req.query.city,
+      token = req.query.token;
   con.query("SELECT * FROM users", (err, result, fields) => {
     for (var i = 0; i < result.length; i++) {
       if(result[i].login == login){
-        res.send('Bad_login')
+        res.send(`{
+          "type" : "reg",
+          "status" : "bad_login"
+        }`)
       }else{
-        var sql = "INSERT INTO `users`(`login`, `password`, `sex`, `age`, `country`, `city`) VALUES ('"+login+"', '"+password+"', '"+sex+"', "+age+", '"+country+"', '"+city+"');"
+        var sql = "INSERT INTO `users`(`login`, `password`, `sex`, `age`, `country`, `city`, `token`) VALUES ('"+login+"', '"+password+"', '"+sex+"', "+age+", '"+country+"', '"+city+"', '"+token+"');"
         con.query(sql, () => {
-          res.send('good')
+          res.send(`{
+            "type" : "reg",
+            "status" : "ok"
+          }`)
         });
       }
+    }
+  })
+})
+
+app.post('/login', (req, res) => {
+  var login = req.query.login,
+      password = req.query.password,
+      token = req.query.token;
+  con.query("SELECT * FROM users", (err, result, fields) => {
+    var auth = false
+    if(login == ''){
+      for (var i = 0; i < result.length; i++) {
+        if(token == result[0].token){
+          auth = true
+          break
+        }
+      }
+    }else{
+      for (var i = 0; i < result.length; i++) {
+        if(login == result[0].login && token == result[0].token){
+          auth = true
+          break
+        }
+      }
+    }
+    if(auth){
+      res.send(`{
+        "type" : "auth",
+        "status" : "ok"
+      }`)
+    }else{
+      res.send(`{
+        "type" : "auth",
+        "status" : "error"
+      }`)
     }
   })
 })
