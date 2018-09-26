@@ -1,5 +1,6 @@
 <?php
-    require 'functions.php';
+require 'functions.php';
+require 'header.php';
 
     if (isLogin()){
         header('Location: http://hidebox.ml/');
@@ -122,3 +123,6 @@
 
 </body>
 </html>
+<?php
+require 'footer.php';
+?>

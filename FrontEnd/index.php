@@ -1,45 +1,8 @@
 <?php
-require 'functions.php'
+require 'functions.php';
+require 'header.php';
 ?>
 
-
-<!doctype html>
-<html lang="en">
-<!--
-
-Page    : index / MobApp
-Version : 1.0
-Author  : Colorlib
-URI     : https://colorlib.com
-
- -->
-
-<head>
-    <title>HideBox - new era of hide and seek</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Mobland - Mobile App Landing Page Template">
-    <meta name="keywords" content="HTML5, bootstrap, mobile, app, landing, ios, android, responsive">
-
-    <!-- Font -->
-    <link rel="dns-prefetch" href="//fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
-
-    <!-- favicon -->
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- Themify Icons -->
-    <link rel="stylesheet" href="css/themify-icons.css">
-    <!-- Owl carousel -->
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <!-- Main css -->
-    <link href="css/style.css" rel="stylesheet">
-</head>
-
-<body data-spy="scroll" data-target="#navbar" data-offset="30">
 
     <!-- Nav Menu -->
     <div class="nav-menu fixed-top">
@@ -55,7 +18,7 @@ URI     : https://colorlib.com
                                 <li class="nav-item"><a href="login.php" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3"
                                                         style="display: <?php echo NotShow();?>" >Login</a></li>
 
-                                <li class="nav-item"><a href="#" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3"
+                                <li class="nav-item"><a href="profile.php" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3"
                                                         style="display: <?php echo Show(); ?>;"><?php echo $login; ?></a></li>
 
 
@@ -373,8 +336,6 @@ URI     : https://colorlib.com
 
 
 
-
-
     <div class="section" id="pricing">
         <div class="container">
             <div class="section-title">
@@ -539,6 +500,6 @@ URI     : https://colorlib.com
     <!-- Custom JS -->
     <script src="js/script.js"></script>
 
-</body>
-
-</html>
+<?php
+require 'footer.php';
+?>
