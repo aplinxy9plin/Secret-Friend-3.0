@@ -5,6 +5,7 @@ var app = express();
 
 global.email = navi_data.email;
 global.password = navi_data.password;
+global.token = navi_data.token;
 
 var con = mysql.createConnection({
   host: "localhost",
@@ -87,7 +88,17 @@ app.post('/login', (req, res) => {
   })
 })
 
-// request Request (5)
+app.post('/create_address', (req, res) => {
+
+})
+
+app.post('/get_token', (req, res) => {
+  res.send(`{
+    "token" : "7489ad20-28dd-4d8c-a707-97d089d07d1f"
+  }
+`)
+})
+
 function getToken(callback) {
     'use strict';
 
@@ -128,12 +139,46 @@ function getToken(callback) {
     request.end();
 }
 
-getToken(((error, statusCode, headers, body) => {
-    console.log('ERROR:', error);
-    console.log('STATUS:', statusCode);
-    console.log('HEADERS:', JSON.stringify(headers));
-    console.log('BODY:', body);
-}))
+function create_address(callback) {
+    var http = require("https");
+
+    var options = {
+      "method": "POST",
+      "hostname": "staging-api.naviaddress.com",
+      "port": null,
+      "path": "/api/v1.5/addresses",
+      "headers": {
+        "content-type": "application/json",
+        "auth-token": "7489ad20-28dd-4d8c-a707-97d089d07d1f",
+        "content-length": "100"
+      }
+    };
+
+    var req = http.request(options, function (res) {
+      var chunks = [];
+
+      res.on("data", function (chunk) {
+        chunks.push(chunk);
+      });
+
+      res.on("end", function () {
+        var body = Buffer.concat(chunks);
+        console.log(body.toString());
+      });
+    });
+    req.write("{\n\tlat: 56.4529699, \n\tlng: 84.9580723, \n\taddress_type: \"free\", \n\tdefault_lang: \"ru\"\n}");
+    req.end();
+}
+create_address((body) => {
+  console.log("BODY" + body);
+})
+// Так получаем токен
+// getToken(((error, statusCode, headers, body) => {
+//     console.log('ERROR:', error);
+//     console.log('STATUS:', statusCode);
+//     console.log('HEADERS:', JSON.stringify(headers));
+//     console.log('BODY:', body);
+// }))
 
 
 
