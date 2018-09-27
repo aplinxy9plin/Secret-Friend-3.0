@@ -98,22 +98,25 @@ require 'header.php';
 <div style="position: fixed; width: 100%; height: 100%; top: 0; left: 0; right: 0; bottom: 0; background-image: linear-gradient(to right top, #ed4d4d, #f53c79, #e941aa, #c659d9, #8074ff);"></div>
 
 <div style="position: absolute; width: 400px; height: auto; top: 100px; left: 50%; margin-left: -200px; box-shadow: 0px 0px 15px rgba(20,0,0,0.33); background: #fffff9; padding: 15px; border-radius: 15px;">
-    <a href="index.php"><img src="images/favicon.ico" /></a>
+    <a href="index.php"><img src="images/icon_h.png" style="width: 40px;" /></a>
+    <br>
 
-    <h3>Log in with your social network</h3>
+    <h4>Log in with your social network</h4>
     <script src="//ulogin.ru/js/ulogin.js"></script>
     <div id="uLogin" data-ulogin="display=panel;theme=classic;fields=first_name,last_name;providers=vkontakte,odnoklassniki,mailru,facebook;hidden=other;redirect_uri=http%3A%2F%2Fhidebox.ml;mobilebuttons=0;"></div>
 
     <i style="display: <?php echo errShow(); ?>;"><?php echo getErrorText(); ?></i>
+    <br>
     <form method="POST" action="login.php">
-        <h3>If you already have an account</h3>
+        <h4>If you already have an account</h4>
         <input placeholder="Login" value="<?php echo GetLoginForm(); ?>" name="login" />
         <input placeholder="Password" type="password" name="password" />
         <button type="submit">Sign in</button>
     </form>
+    <br>
 
     <form method="POST" action="login.php">
-        <h3>Register new user</h3>
+        <h4>Register new user</h4>
         <input placeholder="Login" name="reg_login" />
         <input placeholder="Password" type="password" name="reg_password" />
         <button type="submit">Register</button>
