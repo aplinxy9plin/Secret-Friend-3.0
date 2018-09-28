@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!--
+  Customize this policy to fit your own app's needs. For more guidance, see:
+      https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+  Some notes:
+      * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+      * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+      * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+          * Enable inline JS: add 'unsafe-inline' to default-src
+  -->
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#2196f3">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <title>My App</title>
+
+  <link rel="stylesheet" href="framework7/css/framework7.min.css">
+  <link rel="stylesheet" href="css/icons.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body no-bounce>
+  <div id="app">
+    <!-- Status bar overlay for fullscreen mode-->
+    <div class="statusbar"></div>
+    <!-- Left panel with cover effect-->
+    <div class="panel panel-left panel-cover theme-dark">
+      <div class="view">
+        <div class="page">
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="title">Left Panel</div>
+            </div>
+          </div>
+          <div class="page-content">
+            <div class="block">Left panel content goes here</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Right panel with reveal effect-->
+    <div class="panel panel-right panel-reveal theme-dark">
+      <div class="view">
+        <div class="page">
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="title">Right Panel</div>
+            </div>
+          </div>
+          <div class="page-content">
+            <div class="block">Right panel content goes here</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Views/Tabs container -->
+    <div class="views tabs ios-edges">
+      <!-- Tabbar for switching views-tabs -->
+      <div class="toolbar tabbar-labels toolbar-bottom-md">
+        <div class="toolbar-inner">
+          <a href="#view-home" class="tab-link tab-link-active">
+            <i class="icon f7-icons ios-only">home</i>
+            <i class="icon f7-icons ios-only icon-ios-fill">home_fill</i>
+            <i class="icon material-icons md-only">home</i>
+            <span class="tabbar-label">Карта</span>
+          </a>
+          <a href="#view-catalog" class="tab-link">
+            <i class="icon f7-icons ios-only">list</i>
+            <i class="icon f7-icons ios-only icon-ios-fill">list_fill</i>
+            <i class="icon material-icons md-only">view_list</i>
+            <span class="tabbar-label">Создать тайник</span>
+          </a>
+          <a href="#view-settings" class="tab-link">
+            <i class="icon f7-icons ios-only">settings</i>
+            <i class="icon f7-icons ios-only icon-ios-fill">settings_fill</i>
+            <i class="icon material-icons md-only">settings</i>
+            <span class="tabbar-label">Личный Кабинет</span>
+          </a>
+        </div>
+      </div>
+      <!-- Your main view/tab, should have "view-main" class. It also has "tab-active" class -->
+      <div id="view-home" class="view view-main tab tab-active">
+        <!-- Page, data-name contains page name which can be used in page callbacks -->
+        <div class="page" data-name="home">
+          <!-- Top Navbar -->
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="title sliding"><center>HideBOX</center></div>
+            </div>
+          </div>
+
+          <!-- Scrollable page content-->
+          <div class="page-content">
+            <div id="googleMap1" style="width: 100%; height: 100%;"></div>
+            <!-- <div class="block block-strong">
+              <p>This is an example of tabs-layout application. The main point of such tabbed layout is that each tab contains independent view with its own routing and navigation.</p>
+              <p>Each tab/view may have different layout, different navbar type (dynamic, fixed or static) or without navbar like this tab.</p>
+            </div>
+
+            <div class="block-title">Navigation</div>
+            <div class="list">
+              <ul>
+                <li>
+                  <a href="/about/" class="item-content item-link">
+                    <div class="item-inner">
+                      <div class="item-title">About</div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="block-title">Modals</div>
+            <div class="block block-strong">
+              <div class="row">
+                <div class="col-50">
+                  <a href="#" class="button button-raised button-fill popup-open" data-popup="#my-popup">Popup</a>
+                </div>
+                <div class="col-50">
+                  <a href="#" class="button button-raised button-fill login-screen-open" data-login-screen="#my-login-screen">Login Screen</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="block-title">Panels</div>
+            <div class="block block-strong">
+              <div class="row">
+                <div class="col-50">
+                  <a href="#" class="button button-raised button-fill panel-open" data-panel="left">Left Panel</a>
+                </div>
+                <div class="col-50">
+                  <a href="#" class="button button-raised button-fill panel-open" data-panel="right">Right Panel</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="block-title searchbar-hide-on-search">Page Loaders & Router</div>
+            <div class="list links-list searchbar-hide-on-search">
+              <ul>
+                <li>
+                  <a href="/page-loader-template7/vladimir/123/about-me/1/?start=0&end=30#top">Template7 Page</a>
+                </li>
+                <li>
+                  <a href="/page-loader-component/vladimir/123/about-me/1/?start=0&end=30#top">Component Page</a>
+                </li>
+                <li>
+                  <a href="/load-something-that-doesnt-exist/">Default Route (404)</a>
+                </li>
+                <li>
+                  <a href="/request-and-load/user/123456/">Request Data & Load</a>
+                </li>
+              </ul>
+            </div> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Catalog View -->
+      <div id="view-catalog" class="view tab">
+        <!-- Catalog page will be loaded here dynamically from /catalog/ route -->
+      </div>
+
+      <!-- Settings View -->
+      <div id="view-settings" class="view tab">
+        <!-- Settings page will be loaded here dynamically from /settings/ route -->
+      </div>
+    </div>
+
+    <!-- Popup -->
+    <div class="popup" id="my-popup">
+      <div class="view">
+        <div class="page">
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="title">Popup</div>
+              <div class="right">
+                <a href="#" class="link popup-close">Close</a>
+              </div>
+            </div>
+          </div>
+          <div class="page-content">
+            <div class="block">
+              <p>Popup content goes here.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Login Screen -->
+    <div class="login-screen" id="my-login-screen">
+      <div class="view">
+        <div class="page">
+          <div class="page-content login-screen-content">
+            <div class="login-screen-title">Login</div>
+            <div class="list">
+              <ul>
+                <li class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-title item-label">Username</div>
+                    <div class="item-input-wrap">
+                      <input type="text" name="username" placeholder="Your username">
+                    </div>
+                  </div>
+                </li>
+                <li class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-title item-label">Password</div>
+                    <div class="item-input-wrap">
+                      <input type="password" name="password" placeholder="Your password">
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="list">
+              <ul>
+                <li>
+                  <a href="#" class="item-link list-button login-button">Sign In</a>
+                </li>
+              </ul>
+              <div class="block-footer">Some text about login information.<br>Click "Sign In" to close Login Screen</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="popup popup-about">
+    <div class="navbar">
+
+      <div class="navbar-inner">
+
+        <div class="title sliding">Выбрать место</div>
+        <div class="right">
+          <a href="#" class="col button button-fill link popup-close">Закрыть</a>
+        </div>
+
+        </div>
+
+      </div>
+      <!-- 123 -->
+      <div style="position: fixed; z-index: 10000000000000; margin-top: 50%; margin-left: 40%;">
+        <a class="link popup-close" onclick="document.getElementById('open_pop').innerHTML = 'Выбрано. Изменить?'" href="#" style="text-decoration: none; color: black; font-size: 2em">Выбрать</a><br>
+        <img src="https://www.treeexperience.it/wp-content/uploads/2015/12/pin.png" width="100px">
+      </div>
+      <div id="googleMap2" style="width: 100%; height: 100%;"></div>
+  </div>
+  <!-- Cordova -->
+  <!--
+  <script src="cordova.js"></script>
+  -->
+
+  <!-- Framework7 library -->
+  <script src="framework7/js/framework7.min.js"></script>
+
+  <!-- App routes -->
+  <script src="js/routes.js"></script>
+
+  <!-- Your custom app scripts -->
+  <script src="js/app.js"></script>
+  <style>
+#content{
+  width: 200px;
+}
+  </style>
+  <script>
+      function myMap() {
+          var mapOptions1 = {
+              center: new google.maps.LatLng(56.49771,84.97437),
+              zoom: 12,
+              mapTypeId: google.maps.MapTypeId.ROADMAP,
+              disableDefaultUI: true
+          };
+          var map = new google.maps.Map(document.getElementById("googleMap1"),mapOptions1);
+
+          var mapOptions2 = {
+              center: new google.maps.LatLng(56.49771,84.97437),
+              zoom: 12,
+              mapTypeId: google.maps.MapTypeId.ROADMAP,
+              disableDefaultUI: true
+          };
+          var map1 = new google.maps.Map(document.getElementById("googleMap2"),mapOptions2);
+
+
+          var contentString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Тайник</h1>'+
+            '<img src="https://i.pinimg.com/originals/ca/ac/68/caac68e15740f3c57a7041a283e02b20.jpg" width="200px">' +
+            '<div id="bodyContent">'+
+            '<p><b>Средняя сложность</b>' +
+            '<p><b>Как добраться?</b><br>'+
+            'Остановка шевченко, тайник у волка в руке.<br>'+
+            'Создан: 28.09.2018</p>'+
+            '</div>'+
+            '</div>';
+
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+
+        var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(56.4772953,84.9918872),
+          map: map,
+          title: 'Uluru (Ayers Rock)'
+        });
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+    }
+
+    function myMap1() {
+        var mapOptions1 = {
+            center: new google.maps.LatLng(56.49771,84.97437),
+            zoom: 12,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            disableDefaultUI: true
+        };
+        var map = new google.maps.Map(document.getElementById("googleMap2"),mapOptions1);
+
+        // var mapOptions2 = {
+        //     center: new google.maps.LatLng(56.49771,84.97437),
+        //     zoom: 12,
+        //     mapTypeId: google.maps.MapTypeId.ROADMAP,
+        //     disableDefaultUI: true
+        // };
+        // var map1 = new google.maps.Map(document.getElementById("googleMap2"),mapOptions2);
+
+
+        var contentString = '<div id="content">'+
+          '<div id="siteNotice">'+
+          '</div>'+
+          '<h1 id="firstHeading" class="firstHeading">Тайник</h1>'+
+          '<img src="https://i.pinimg.com/originals/ca/ac/68/caac68e15740f3c57a7041a283e02b20.jpg" width="200px">' +
+          '<div id="bodyContent">'+
+          '<p><b>Средняя сложность</b>' +
+          '<p><b>Как добраться?</b><br>'+
+          'Остановка шевченко, тайник у волка в руке.<br>'+
+          'Создан: 28.09.2018</p>'+
+          '</div>'+
+          '</div>';
+
+      var infowindow = new google.maps.InfoWindow({
+        content: contentString
+      });
+
+      var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(56.4772953,84.9918872),
+        map: map,
+        title: 'Uluru (Ayers Rock)'
+      });
+      marker.addListener('click', function() {
+        infowindow.open(map, marker);
+      });
+  }
+//     function initialize() {
+//   var latlng = new google.maps.LatLng(56.49771,84.97437);
+//   var mapOptions = {
+//     zoom: 11,
+//     center: latlng,
+//     disableDefaultUI: true,
+//     styles: [
+//       {
+//         'featureType': 'all',
+//         'elementType': 'all',
+//         'stylers': [
+//           { 'invert_lightness': true },
+//           { 'saturation': -50 },
+//           { 'lightness': 10 },
+//           { 'gamma': 1 },
+//           { 'hue': '#404C54' }
+//         ]
+//       }
+//     ]
+//   }
+//   var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+//
+//   // // Example standard marker
+//   // var marker = new google.maps.Marker({
+//   // position: latlng,
+//   // map: map,
+//   // title: 'Hello World!'
+//   // });
+//
+//   overlay = new CustomMarker(latlng, map,{marker_id: '123'});
+// }
+//
+// google.maps.event.addDomListener(window, 'load', initialize);
+//
+// function CustomMarker(latlng, map, args) {
+// 	this.latlng = latlng;
+// 	this.args = args;
+// 	this.setMap(map);
+// }
+//
+// CustomMarker.prototype = new google.maps.OverlayView();
+// CustomMarker.prototype.draw = function() {
+// 	var self = this;
+// 	var div = this.div;
+// 	if (!div) {
+// 		div = this.div = document.createElement('div');
+// 		div.className = 'centerMarker';
+// 		// div.style.width = '20px';
+// 		// div.style.height = '20px';
+// 		// if (typeof(self.args.marker_id) !== 'undefined') {
+// 		// 	div.dataset.marker_id = self.args.marker_id;
+// 		// }
+//
+// 		google.maps.event.addDomListener(div, "click", function(event) {
+// 			alert('You clicked on a custom marker!');
+// 			google.maps.event.trigger(self, "click");
+// 		});
+//
+// 		var panes = this.getPanes();
+// 		panes.overlayImage.appendChild(div);
+// 	}
+//
+// 	var point = this.getProjection().fromLatLngToDivPixel(this.latlng);
+//
+// 	if (point) {
+// 		div.style.left = (point.x - 0) + 'px';
+// 		div.style.top = (point.y - 0) + 'px';
+// 	}
+// };
+
+// CustomMarker.prototype.remove = function() {
+// 	if (this.div) {
+// 		this.div.parentNode.removeChild(this.div);
+// 		this.div = null;
+// 	}
+// };
+
+// CustomMarker.prototype.getPosition = function() {
+// 	return this.latlng;
+// };
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhm2PbVysTk8XFx6Vbcf9oPekgbCrmAJ8&callback=myMap&libraries=places"></script>
+  <div class="popup popup-services">
+    <div class="block">
+      <p>Services</p>
+      <!-- Close Popup -->
+      <p><a class="link popup-close" href="#">Close popup</a></p>
+      <p>Lorem ipsum dolor sit amet...</p>
+    </div>
+  </div>
+</body>
+</html>

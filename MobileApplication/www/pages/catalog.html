@@ -1,0 +1,124 @@
+<template>
+  <div class="page" data-name="catalog">
+    <div class="navbar">
+      <div class="navbar-inner sliding">
+        <div class="title">Создать тайник</div>
+      </div>
+    </div>
+    <div class="page-content">
+      <div class="list links-list">
+        <p class="padding-left"><b>1.</b>Выберите сложность тайника</p>
+        <!-- <ul>
+          {{#each products}}
+            <li><a href="/product/{{id}}/">{{title}}</a></li>
+          {{/each}}
+        </ul> -->
+        <div class="list">
+          <ul>
+            <li>
+              <label class="item-checkbox item-content" onclick="check(1)">
+                <input id="1" type="checkbox" name="demo-checkbox" value="easy" checked="checked"/>
+                <i class="icon icon-checkbox"></i>
+                <div class="item-inner">
+                  <div class="item-title">Простой</div>
+                </div>
+              </label>
+            </li>
+            <li>
+              <label class="item-checkbox item-content" onclick="check(2)">
+                <input id="2" type="checkbox" name="demo-checkbox" value="middle"/>
+                <i class="icon icon-checkbox"></i>
+                <div class="item-inner">
+                  <div class="item-title">Средний</div>
+                </div>
+              </label>
+            </li>
+            <li>
+              <label class="item-checkbox item-content" onclick="check(3)">
+                <input id="3" type="checkbox" name="demo-checkbox" value="hard"/>
+                <i class="icon icon-checkbox"></i>
+                <div class="item-inner">
+                  <div class="item-title">Сложный</div>
+                </div>
+              </label>
+            </li>
+          </ul>
+        </div>
+
+        <p class="padding-left"><b>2.</b>Напиши описание тайника</p>
+        <!-- <ul>
+          {{#each products}}
+            <li><a href="/product/{{id}}/">{{title}}</a></li>
+          {{/each}}
+        </ul> -->
+        <div class="list no-hairlines-md">
+          <ul>
+            <li class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-input-wrap">
+                  <textarea  class="resizable" placeholder="Описание"></textarea>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <p class="padding-left"><b>3.</b>Как добраться?</p>
+        <!-- <ul>
+          {{#each products}}
+            <li><a href="/product/{{id}}/">{{title}}</a></li>
+          {{/each}}
+        </ul> -->
+        <div class="list no-hairlines-md">
+          <ul>
+            <li class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-input-wrap">
+                  <textarea  class="resizable" placeholder="Как добраться"></textarea>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <p class="padding-left"><b>4.</b>Загрузи изображение</p>
+        <!-- <ul>
+          {{#each products}}
+            <li><a href="/product/{{id}}/">{{title}}</a></li>
+          {{/each}}
+        </ul> -->
+        <div class="block">
+          <div class="row">
+            <button id="image_upload" onclick="document.getElementById('files').click(); handleFileSelect(false)" class="col button button-outline">Загрузить изображение</button>
+          </div>
+          <input style="display: none" type="file" id="files" name="files[]" multiple />
+        </div>
+
+        <p class="padding-left"><b>5.</b>Выбрать место на карте</p>
+        <!-- <ul>
+          {{#each products}}
+            <li><a href="/product/{{id}}/">{{title}}</a></li>
+          {{/each}}
+        </ul> -->
+        <div class="block">
+          <!-- Open About Popup -->
+          <p><a class="link popup-open" href="#" data-popup=".popup-about" id="open_pop">Открыть карту</a></p>
+        </div>
+
+        <div class="block">
+          <button class="col button button-fill color-blue">Создать</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+  return {
+    data: function () {
+      return {
+        products: this.$root.products,
+      };
+    }
+  };
+</script>
