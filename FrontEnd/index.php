@@ -3,7 +3,6 @@ require 'functions.php';
 require 'header.php';
 ?>
 
-
 <div class="nav-menu fixed-top" style="background: -webkit-linear-gradient(0deg, #2380ff 0%, #52fdd9 100%);">
     <div class="container">
         <div class="row">
@@ -15,14 +14,14 @@ require 'header.php';
                             <li class="nav-item"> <a style="font-size: 15px;" class="nav-link active" href="#home">ГЛАВНАЯ <span class="sr-only">(current)</span></a> </li>
                             <li class="nav-item"> <a style="font-size: 15px;" class="nav-link" href="#features">УЗНАТЬ БОЛЬШЕ</a> </li>
                             <li class="nav-item"><a href="login.php" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3"
-                                                    style="display: <?php echo NotShow();?>" >ВОЙТИ</a></li>
+                                                    style="font-size: 15px; display: <?php echo NotShow();?>" >ВОЙТИ</a></li>
 
-                            <li class="nav-item" <?php if(isset($login)){echo "style='display: block'";;}else{echo "style='display: none'";} ?>><a style="font-size: 15px;" href="profile.php" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3"
+                            <li class="nav-item" <?php if(isset($login)){echo "style='display: block'";}else{echo "style='display: none'";} ?>><a style="font-size: 15px;" href="profile.php" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3"
                                                     style="display: <?php echo Show(); ?>;"><?php if(isset($login)){echo $login;} ?></a></li>
 
 
-                            <li class="nav-item"> <a style="font-size: 15px;" class="nav-link" href="login.php?logout=1"
-                                                     style="display: <?php echo Show(); ?>;">ВЫЙТИ</a> </li>
+                            <li class="nav-item"><a class="nav-link" href="login.php?logout=1"
+                                                    style="font-size: 15px; display: <?php echo Show();?>" >ВЫЙТИ</a> </li>
 
                         </ul>
                     </div>
@@ -35,7 +34,7 @@ require 'header.php';
 
     <header class="bg-gradient" id="home">
         <div class="container mt-5">
-            <h1>HideBox</h1>
+            <h1>HideBox2</h1>
             <p class="tagline" style="color: white">Поиск среди миллионов тайников по всему миру </p>
             <i class="tagline" style="font-size: 10px; color: white">Powered by <a href="https://naviaddress.com/" style="color: white">NAVIADDRESS</a></i>
         </div>
@@ -158,7 +157,7 @@ require 'header.php';
                   </ul>
               </div>
               <div class="col-md-4">
-                  <img src="images/samsung.png" alt="iphone" class="img-fluid">
+                  <img src="images/samsung_clean.png" alt="iphone" class="img-fluid">
               </div>
 
           </div>
@@ -199,13 +198,15 @@ require 'header.php';
     <!-- // end .section -->
     <footer class="my-5 text-center">
         <!-- Copyright removal is not prohibited! -->
-        <p class="mb-2"><small>COPYRIGHT © 2017. ALL RIGHTS RESERVED. MOBAPP TEMPLATE BY <a href="https://colorlib.com">COLORLIB</a></small></p>
+        <p class="mb-2"><small>COPYRIGHT © 2018. ALL RIGHTS RESERVED. MOBAPP TEMPLATE BY <a href="https://colorlib.com">COLORLIB</a></small></p>
 
+        <!--
         <small>
             <a href="#" class="m-2">PRESS</a>
             <a href="#" class="m-2">TERMS</a>
             <a href="#" class="m-2">PRIVACY</a>
         </small>
+         -->
     </footer>
 
     <!-- jQuery and Bootstrap -->

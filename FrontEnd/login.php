@@ -1,13 +1,14 @@
 <?php
 require 'functions.php';
-require 'header.php';
 
     if (isLogin()){
         header('Location: http://hidebox.ml/');
 
     }
 
-    if (isset($_POST['login'])){
+
+
+if (isset($_POST['login'])){
 
         $log = $_POST['login'];
         $pass = $_POST['password'];
@@ -34,7 +35,9 @@ require 'header.php';
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
-            header('Location: http://hidebox.ml/login.php?e=2');
+            while($row = $result->fetch_assoc()) {
+                header('Location: http://hidebox.ml/login.php?e=2');
+            }
         } else {
 
             $token = genToken($log);
@@ -60,9 +63,9 @@ require 'header.php';
 
     function getErrorText(){
         if ($_GET['e']==1){
-            return "Incorrect login or password";
+            return "Неправильный логин или пароль";
         } else if ($_GET['e'] == 2){
-            return "This login is already taken";
+            return "Этот логин уже занят";
         } else {
             return "no errors. but this shouldn't be seen";
         }
@@ -84,45 +87,50 @@ require 'header.php';
         }
     }
 
-
+require 'header.php';
 ?>
-<head>
-    <meta charset="UTF-8">
-</head>
 <div style="display: <?php echo Show(); ?>;">
     Confidential information
     <b>
         <?php echo "welcome, " . $login;?>
     </b>
 </div>
-<div style="position: fixed; width: 100%; height: 100%; top: 0; left: 0; right: 0; bottom: 0; background-image: linear-gradient(to right top, #ed4d4d, #f53c79, #e941aa, #c659d9, #8074ff);"></div>
+<div style=" display: none; position: fixed; width: 100%; height: 100%; top: 0; left: 0; right: 0; bottom: 0; background-image: linear-gradient(to right top, #ed4d4d, #f53c79, #e941aa, #c659d9, #8074ff);"></div>
 
-<div style="position: absolute; width: 400px; height: auto; top: 100px; left: 50%; margin-left: -200px; box-shadow: 0px 0px 15px rgba(20,0,0,0.33); background: #fffff9; padding: 15px; border-radius: 15px;">
-    <a href="index.php"><img src="images/favicon.ico" /></a>
 
-    <h3>Log in with your social network</h3>
-    <script src="//ulogin.ru/js/ulogin.js"></script>
-    <div id="uLogin" data-ulogin="display=panel;theme=classic;fields=first_name,last_name;providers=vkontakte,odnoklassniki,mailru,facebook;hidden=other;redirect_uri=http%3A%2F%2Fhidebox.ml;mobilebuttons=0;"></div>
+        <div class="container">
+            <div class="row justify-content-md-center" >
+                <div class="col-md-4" style="top: 50px; background: -webkit-linear-gradient(0deg, #75e4ff 0%, #7bd6ff 100%); text-align: center; padding: 15px; border-radius: 15px;">
+                    <a href="index.php"><img src="images/hidebox_logo.png" style="height: 40px;" /></a>
 
-    <i style="display: <?php echo errShow(); ?>;"><?php echo getErrorText(); ?></i>
-    <form method="POST" action="login.php">
-        <h3>If you already have an account</h3>
-        <input placeholder="Login" value="<?php echo GetLoginForm(); ?>" name="login" />
-        <input placeholder="Password" type="password" name="password" />
-        <button type="submit">Sign in</button>
-    </form>
+                    <h4>Войти с помощью</h4>
+                    <script src="//ulogin.ru/js/ulogin.js"></script>
+                    <div id="uLogin" data-ulogin="display=panel;theme=classic;fields=first_name,last_name;providers=vkontakte,odnoklassniki,mailru,facebook;hidden=other;redirect_uri=http%3A%2F%2Fhidebox.ml;mobilebuttons=0;"></div>
+                    <br>
+                    <p>- или -</p>
 
-    <form method="POST" action="login.php">
-        <h3>Register new user</h3>
-        <input placeholder="Login" name="reg_login" />
-        <input placeholder="Password" type="password" name="reg_password" />
-        <button type="submit">Register</button>
-    </form>
+                    <i style="display: <?php echo errShow(); ?>; color: rgba(116,20,67,0.96);"><?php echo getErrorText(); ?></i>
+                    <form method="POST" action="login.php">
+                        <h4>Если у Вас уже есть аккаунт</h4>
+                        <input placeholder="Login" value="<?php echo GetLoginForm(); ?>" name="login" />
+                        <br><input placeholder="Password" type="password" name="password" />
+                        <br><button class="btn btn-primary" type="submit" style="margin: 10px 0;">Войти</button>
+                    </form>
+                    <br>
+                    <p>- или -</p>
+                    <form method="POST" action="login.php">
+                        <h4>Регистрация</h4>
+                        <input placeholder="Login" name="reg_login" />
+                        <br><input placeholder="Password" type="password" name="reg_password" />
+                        <br><button class="btn btn-primary" type="submit" style="margin: 10px 0;">Создать аккаунт</button>
+                    </form>
+                </div>
+            </div>
+        </div>
 
-</div>
 
-</body>
-</html>
+
+
 <?php
 require 'footer.php';
 ?>

@@ -3,8 +3,8 @@ session_start();
 
 $servername = "localhost";
 $username = "root";
-$password = "top4ek2281337?";
-$dbname = "secret_friend";
+$password = "";
+$dbname = "navisanta";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
