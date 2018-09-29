@@ -55,6 +55,8 @@ require 'header.php';
 
         <div class="container">
 
+
+
             <div class="section-title">
                 <h3 style="color: #2486E8">Приемущества</h3>
             </div>
@@ -157,7 +159,11 @@ require 'header.php';
                   </ul>
               </div>
               <div class="col-md-4">
-                  <img src="images/samsung_clean.png" alt="iphone" class="img-fluid">
+                  <video autoplay autobuffer loop muted style="position: absolute; width: 80%; left: 10%; top: 12%; ">
+                      <source src="images/vid_low.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+                  <img src="images/iphone_frame.png" alt="iphone" class="img-fluid">
               </div>
 
           </div>
