@@ -24,6 +24,7 @@
   color: grey;
 }
 </style>
+
 <!-- Nav Menu -->
 <div class="nav-menu fixed-top" style="background: -webkit-linear-gradient(0deg, #2380ff 0%, #52fdd9 100%);">
     <div class="container">
@@ -52,63 +53,73 @@
         </div>
     </div>
 </div>
-<!-- <div class="nav-menu fixed-top">
-    <div class="container"  style="background: #31ea3d; border-radius: 15px;">
-        <div class="row">
-            <div class="col-md-12">
-                <nav class="navbar navbar-dark navbar-expand-lg">
-                    <a class="navbar-brand" href="index.php"><img src="images/favicon.ico" class="img-fluid" alt="logo"></a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
-                    <div class="collapse navbar-collapse" id="navbar">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item"> <a class="nav-link active" href="profile.php">PROFILE<span class="sr-only">(current)</span></a> </li>
-                            <li class="nav-item"> <a class="nav-link" href="#">Achievements</a> </li>
-                            <li class="nav-item"> <a class="nav-link" href="#">Achievements</a> </li>
-                            <li class="nav-item"><a href="login.php" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3"
-                                                    style="display: <?php echo NotShow();?>" >Login</a></li>
-
-                            <li class="nav-item"><a href="profile.php" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3"
-                                                    style="display: <?php echo Show(); ?>;"><?php echo $login; ?></a></li>
 
 
-                            <li class="nav-item"> <a class="nav-link" href="login.php?logout=1"
-                                                     style="display: <?php echo Show(); ?>;">Log out</a> </li>
+<!-- modal scroll -->
+<div class="modal fade" id="scrollmodal" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="scrollmodalLabel">Создать тайник</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            </button>
+        </div>
+        <div class="modal-body">
 
-                        </ul>
+
+            <div class="form-group col-md-6">
+                <label for="exampleInputName2" class="pr-1  form-control-label"><b>1. Выберите сложность</b></label>
+                <div class="form-check">
+                    <div class="checkbox">
+                        <label for="checkbox1" class="form-check-label ">
+                            <input type="radio" id="checkbox1" name="checkbox1" value="option1" class="form-check-input"> Простой
+                        </label>
                     </div>
-                </nav>
-            </div>
+                    <div class="checkbox">
+                        <label for="checkbox2" class="form-check-label ">
+                            <input type="radio" id="checkbox2" name="checkbox2" value="option2" class="form-check-input"> Средний
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="checkbox3" class="form-check-label ">
+                            <input type="radio" id="checkbox3" name="checkbox3" value="option3" class="form-check-input"> Сложный
+                        </label>
+                    </div>
+                </div>
+            </div><hr>
+
+            <div class="form-group col-md-6">
+                <label for="exampleInputName2" class="pr-1  form-control-label"><b>2. Добавьте описание</b></label>
+                <textarea class="form-control" class="col-md-12" style="height: 220px" name="description" placeholder="Описание"></textarea>
+            </div><hr>
+
+            <div class="form-group col-md-6">
+                <label for="exampleInputName2" class="pr-1  form-control-label"><b>3. Как добратьсья?</b></label>
+                <textarea class="form-control" class="col-md-12" style="height: 220px" name="howtoget" placeholder="Описание"></textarea>
+            </div><hr>
+
+            <div class="form-group col-md-6">
+                <label for="exampleInputName2" class="pr-1  form-control-label"><b>4. Добавить изображения</b></label>
+                <label>
+                    <input type="file" id="file"/>
+                </label>
+            </div><hr>
+
+            <div class="form-group col-md-6">
+                <label for="exampleInputName2" class="pr-1  form-control-label"><b>5. Выбрать место на карте </b></label>
+                <button class="btn btn-primary">ВЫБРАТЬ</button>
+            </div><hr>
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+            <button type="button" class="btn btn-primary">Сохранить</button>
         </div>
     </div>
-</div> -->
+</div>
+</div>
+<!-- end modal scroll -->
 
-<!-- <header class="" id="">
-    <div class="container mt-0">
-        <div class="row">
-            <div class="col-md-6" style="text-align: left;">
-                <h3 style="color: black;"><?php //echo $login; ?></h3>
-
-                <a href="#" class="btn btn-success" style="">Create</a>
-            </div>
-
-            <div class="col-md-6" style="text-align: right;">
-                <h3 style="color: black;">Achievements</h3>
-
-                <div class="card mb-3" style="">
-                    <a class="nav-link" href="#">Collect 1 box <span class="badge badge-warning">10G</span></a>
-                </div>
-                <div class="card mb-3" style="">
-                    <a class="nav-link" href="#">Collect 5 boxes <span class="badge badge-warning">100G</span></a>
-                </div>
-                <div class="card mb-3" style="">
-                    <a class="nav-link" href="#">Make a hidden box <span class="badge badge-warning">30G</span></a>
-                </div>
-
-
-            </div>
-        </div>
-    </div>
-
-</header> -->
 <div id="mmenu_screen" class="container-fluid main_container text-white d-flex">
     <div class="row flex-fill">
         <div class="col-sm-6 h-100">
@@ -124,10 +135,13 @@
                                 <div class="card-body">
                                   <h5 class="card-title">СОЗДАТЬ ТАЙНИК</h5>
                                   <p class="card-text">Создание тайника – большой шаг в жизни любого хайдбоксера.</p>
-                                  <a href="#" class="btn btn-primary">Спрятать новый тайник</a>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                            data-target="#scrollmodal">Спрятать новый тайник</button>
                                 </div>
                               </div>
                           </div>
+
+
 
                           <div class="col-md-6" style="text-align: right;">
                               <h3 class="display-4" style="color: black; font-size: 40px">ДОСТИЖЕНИЯ</h3>
@@ -203,6 +217,7 @@
         </div>
     </div>
 </div>
+
 <!-- <section>
     <div class="container-fluid">
         <div class="row">
